@@ -6,11 +6,13 @@ const app = express();
 app.use(express.static('public'));
 app.engine('html', ejs.renderFile);
 app.set('view engine', 'html');
+app.set('views', __dirname);
 
 const PORT = 8080;
 const HOST = '0.0.0.0';
 
 app.get('/', (req, res) => {
+  console.log(__dirname + '/index.html');
   res.render(path.join(__dirname + '/index.html'));
 });
 
@@ -20,4 +22,5 @@ app.get('/success', (req, res) => {
 
 app.listen(PORT, HOST, () => {
   console.log(`Example app listening on port ${PORT}`);
+
 });
